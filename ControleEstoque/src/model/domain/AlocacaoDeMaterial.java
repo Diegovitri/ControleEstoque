@@ -43,9 +43,9 @@ public class AlocacaoDeMaterial implements Serializable {
 	private Material material;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="CD_ALMOXARIFADO",referencedColumnName="CD_ALMOXARIFADO",
+	@JoinColumn(name="CD_OBRA",referencedColumnName="CD_OBRA",
 			insertable=false,updatable=false)
-	private Almoxarifado almoxarifado;
+	private Obra obra;
 
 
 	public AlocacaoDeMaterial() {
@@ -60,16 +60,24 @@ public class AlocacaoDeMaterial implements Serializable {
 		this.material = material;
 	}
 
-	public Almoxarifado getAlmoxarifado() {
+	/*public Almoxarifado getAlmoxarifado() {
 		return almoxarifado;
 	}
 
 	public void setAlmoxarifado(Almoxarifado almoxarifado) {
 		this.almoxarifado = almoxarifado;
-	}
+	}*/
 
 	public AlocacaoDeMaterialPK getAlocacaoDeMaterialPK() {
 		return alocacaoDeMaterialPK;
+	}
+
+	public Obra getObra() {
+		return obra;
+	}
+
+	public void setObra(Obra obra) {
+		this.obra = obra;
 	}
 
 	public void setAlocacaoDeMaterialPK(AlocacaoDeMaterialPK alocacaoDeMaterialPK) {

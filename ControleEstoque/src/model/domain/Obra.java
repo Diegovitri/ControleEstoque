@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.transaction.Transactional;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -43,10 +42,18 @@ public class Obra implements Serializable {
 	@JoinColumn(name="CD_CONSTRUTORA",referencedColumnName="CD_CONSTRUTORA")
 	private Construtora construtora;
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="CD_ALMOXARIFADO",referencedColumnName="CD_ALMOXARIFADO")
 	private Almoxarifado almoxarifado;
 	
+
+	public Almoxarifado getAlmoxarifado() {
+		return almoxarifado;
+	}
+
+	public void setAlmoxarifado(Almoxarifado almoxarifado) {
+		this.almoxarifado = almoxarifado;
+	}*/
 
 	public Obra() {
 		super();

@@ -13,7 +13,7 @@ public class AlocacaoDeMaterialDaoImpl implements AlocacaoDeMaterialDao {
 	
 	@PersistenceContext(unitName="ControleEstoquePU")
 	private EntityManager entityManager;
-
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<AlocacaoDeMaterial> getAlocacaoDeMateriais(AlocacaoDeMaterial alocacaoDeMateriais) {
@@ -23,7 +23,7 @@ public class AlocacaoDeMaterialDaoImpl implements AlocacaoDeMaterialDao {
 			hql.append(" and al.codigo = :codigo");
 		}
 		Query query = entityManager.createQuery(hql.toString());
-		if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoAlmoxarifado() != null) {
+		if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoMaterial() != null) {
 			query.setParameter("codigo",alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoAlmoxarifado());
 		} 
 		return query.getResultList();
