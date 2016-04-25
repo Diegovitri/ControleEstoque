@@ -44,7 +44,8 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 		AlocacaoDeMaterial alocacaoDeMaterial = new AlocacaoDeMaterial();
 
 		//Dúvida sobre este metodo, pois no banco de dados é uma tabela onde tem duas chaves primarias que são estrangeiras tbm
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoAlmoxarifado(codigo);
+		//alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoAlmoxarifado(codigo);
+		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
 		return alocacaoDeMaterialDao.getAlocacaoDeMateriais(alocacaoDeMaterial);
 	}
 
@@ -78,7 +79,7 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 		AlocacaoDeMaterial alocacaoDeMaterial = new AlocacaoDeMaterial();
 		
 		//Dúvida sobre este metodo, pois no banco de dados é uma tabela onde tem duas chaves primarias que são estrangeiras tbm
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoAlmoxarifado(codigo);
+		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
 		alocacaoDeMaterialDao.excluir(alocacaoDeMaterial);
 
 	}

@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -29,7 +28,6 @@ public class Construtora implements Serializable {
 	@Column(name="CD_CONSTRUTORA")
 	private Integer codigo;
 	
-	@XmlTransient
 	@OneToMany(mappedBy="construtora", fetch = FetchType.EAGER)
 	private List<Obra> obras;
 	

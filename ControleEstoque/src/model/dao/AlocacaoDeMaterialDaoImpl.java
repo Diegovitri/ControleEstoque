@@ -19,12 +19,13 @@ public class AlocacaoDeMaterialDaoImpl implements AlocacaoDeMaterialDao {
 	public List<AlocacaoDeMaterial> getAlocacaoDeMateriais(AlocacaoDeMaterial alocacaoDeMateriais) {
 		StringBuffer hql = new StringBuffer("from AlocacaoDeMaterial al"
 				+ " where 1 = 1");		
-		if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoAlmoxarifado() != null) {
+		//if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoAlmoxarifado() != null) {
+		if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoMaterial() != null) {
 			hql.append(" and al.codigo = :codigo");
 		}
 		Query query = entityManager.createQuery(hql.toString());
 		if (alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoMaterial() != null) {
-			query.setParameter("codigo",alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoAlmoxarifado());
+			query.setParameter("codigo",alocacaoDeMateriais.getAlocacaoDeMaterialPK().getCodigoMaterial());
 		} 
 		return query.getResultList();
 	}

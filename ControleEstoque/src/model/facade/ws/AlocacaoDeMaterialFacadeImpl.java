@@ -26,8 +26,8 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 	@WebMethod(operationName="getAlocacaoDeMaterialCodigo")
 	public List<AlocacaoDeMaterial> getAlocacaoDeMateriais(@WebParam(name="codigoAlocacaoDeMaterialCodigo") Integer codigo) {
 		AlocacaoDeMaterial alocacaoDeMaterial = new AlocacaoDeMaterial();
-		//Dúvida sobre este metodo, pois no banco de dados é uma tabela onde tem duas chaves primarias que são estrangeiras tbm
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoAlmoxarifado(codigo);
+		
+		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
 		return alocacaoDeMaterialDao.getAlocacaoDeMateriais(alocacaoDeMaterial);
 	}
 
@@ -48,7 +48,7 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 		
 		
 		//Dúvida sobre este metodo, pois no banco de dados é uma tabela onde tem duas chaves primarias que são estrangeiras tbm
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoAlmoxarifado(codigo);
+		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
 		
 		alocacaoDeMaterialDao.excluir(alocacaoDeMaterial);
 
