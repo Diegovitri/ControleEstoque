@@ -27,7 +27,7 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 	public List<AlocacaoDeMaterial> getAlocacaoDeMateriais(@WebParam(name="codigoAlocacaoDeMaterialCodigo") Integer codigo) {
 		AlocacaoDeMaterial alocacaoDeMaterial = new AlocacaoDeMaterial();
 		
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
+		alocacaoDeMaterial.setCodAlocacao(codigo);
 		return alocacaoDeMaterialDao.getAlocacaoDeMateriais(alocacaoDeMaterial);
 	}
 
@@ -48,7 +48,7 @@ public class AlocacaoDeMaterialFacadeImpl implements AlocacaoDeMaterialFacade {
 		
 		
 		//Dúvida sobre este metodo, pois no banco de dados é uma tabela onde tem duas chaves primarias que são estrangeiras tbm
-		alocacaoDeMaterial.getAlocacaoDeMaterialPK().setCodigoMaterial(codigo);
+		alocacaoDeMaterial.setCodAlocacao(codigo);
 		
 		alocacaoDeMaterialDao.excluir(alocacaoDeMaterial);
 

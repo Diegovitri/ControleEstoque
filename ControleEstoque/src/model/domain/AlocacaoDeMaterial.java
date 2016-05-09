@@ -2,13 +2,16 @@ package model.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,10 +26,12 @@ public class AlocacaoDeMaterial implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="CD_ALOCACAO")
+	private Integer codAlocacao;
 
-	@EmbeddedId
-	private AlocacaoDeMaterialPK alocacaoDeMaterialPK;
-	
+
 	@Column(name="QT_SOLICITADA")
 	private Integer quantidade;
 	
@@ -37,52 +42,19 @@ public class AlocacaoDeMaterial implements Serializable {
 	@Column(name="NM_SOLICITANTE")
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="CD_MATERIAL",referencedColumnName="CD_MATERIAL",
-	insertable=false,updatable=false)
-	private Material material;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="CD_OBRA",referencedColumnName="CD_OBRA",
-			insertable=false,updatable=false)
+	@OneToOne
+	@JoinColumn(name= "CD_OBRA")
 	private Obra obra;
-
-
+	
+	@OneToMany(mappedBy="alocacao")
+	private List<Material> materiais;
+	
 	public AlocacaoDeMaterial() {
-
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Material getMaterial() {
-		return material;
-	}
 
-	public void setMaterial(Material material) {
-		this.material = material;
-	}
-
-	/*public Almoxarifado getAlmoxarifado() {
-		return almoxarifado;
-	}
-
-	public void setAlmoxarifado(Almoxarifado almoxarifado) {
-		this.almoxarifado = almoxarifado;
-	}*/
-
-	public AlocacaoDeMaterialPK getAlocacaoDeMaterialPK() {
-		return alocacaoDeMaterialPK;
-	}
-
-	public Obra getObra() {
-		return obra;
-	}
-
-	public void setObra(Obra obra) {
-		this.obra = obra;
-	}
-
-	public void setAlocacaoDeMaterialPK(AlocacaoDeMaterialPK alocacaoDeMaterialPK) {
-		this.alocacaoDeMaterialPK = alocacaoDeMaterialPK;
-	}
 
 	public Integer getQuantidade() {
 		return quantidade;
@@ -100,13 +72,53 @@ public class AlocacaoDeMaterial implements Serializable {
 		this.data = data;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Obra getObra() {
+		return obra;
+	}
+
+	public void setObra(Obra obra) {
+		this.obra = obra;
+	}
+
+	public List<Material> getMateriais() {
+		return materiais;
+	}
+
+	public void setMateriais(List<Material> materiais) {
+		this.materiais = materiais;
+	}
+
+
+
+	public Integer getCodAlocacao() {
+		return codAlocacao;
+	}
+
+
+
+	public void setCodAlocacao(Integer codAlocacao) {
+		this.codAlocacao = codAlocacao;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((alocacaoDeMaterialPK == null) ? 0 : alocacaoDeMaterialPK.hashCode());
+		result = prime * result + ((codAlocacao == null) ? 0 : codAlocacao.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -117,22 +129,16 @@ public class AlocacaoDeMaterial implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		AlocacaoDeMaterial other = (AlocacaoDeMaterial) obj;
-		if (alocacaoDeMaterialPK == null) {
-			if (other.alocacaoDeMaterialPK != null)
+		if (codAlocacao == null) {
+			if (other.codAlocacao != null)
 				return false;
-		} else if (!alocacaoDeMaterialPK.equals(other.alocacaoDeMaterialPK))
+		} else if (!codAlocacao.equals(other.codAlocacao))
 			return false;
 		return true;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	
+
+
 	
 }

@@ -9,11 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Transactional
+//@Transactional
 @XmlRootElement
 @Entity
 @Table(name="TB_OBRA")
@@ -42,21 +42,13 @@ public class Obra implements Serializable {
 	@JoinColumn(name="CD_CONSTRUTORA",referencedColumnName="CD_CONSTRUTORA")
 	private Construtora construtora;
 	
-	/*@OneToOne
-	@JoinColumn(name="CD_ALMOXARIFADO",referencedColumnName="CD_ALMOXARIFADO")
-	private Almoxarifado almoxarifado;
-	
-
-	public Almoxarifado getAlmoxarifado() {
-		return almoxarifado;
-	}
-
-	public void setAlmoxarifado(Almoxarifado almoxarifado) {
-		this.almoxarifado = almoxarifado;
-	}*/
+	@OneToOne(mappedBy = "obra")
+	//@PrimaryKeyJoinColumn
+	private AlocacaoDeMaterial alocacaoDeMaterial;
 
 	public Obra() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getCodigo() {
@@ -99,6 +91,14 @@ public class Obra implements Serializable {
 		this.construtora = construtora;
 	}
 
+	public AlocacaoDeMaterial getAlocacaoDeMaterial() {
+		return alocacaoDeMaterial;
+	}
+
+	public void setAlocacaoDeMaterial(AlocacaoDeMaterial alocacaoDeMaterial) {
+		this.alocacaoDeMaterial = alocacaoDeMaterial;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,7 +123,6 @@ public class Obra implements Serializable {
 			return false;
 		return true;
 	}
-
 	
 
 }

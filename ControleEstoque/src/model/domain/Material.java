@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -35,6 +37,18 @@ public class Material implements Serializable {
 		super();
 	}
 
+	public AlocacaoDeMaterial getAlocacao() {
+		return alocacao;
+	}
+
+	public void setAlocacao(AlocacaoDeMaterial alocacao) {
+		this.alocacao = alocacao;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="CD_ALOCACAO",referencedColumnName="CD_ALOCACAO")
+	private AlocacaoDeMaterial alocacao;
+	
 	public Integer getCodigo() {
 		return codigo;
 	}
@@ -84,5 +98,7 @@ public class Material implements Serializable {
 		return true;
 	}
 
+	
+	
 	
 }

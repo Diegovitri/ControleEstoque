@@ -5,13 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -28,7 +28,9 @@ public class Construtora implements Serializable {
 	@Column(name="CD_CONSTRUTORA")
 	private Integer codigo;
 	
-	@OneToMany(mappedBy="construtora", fetch = FetchType.EAGER)
+	//@OneToMany(mappedBy="construtora", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="construtora")
+	@XmlTransient
 	private List<Obra> obras;
 	
 	@Column(name="NM_CONSTRUTORA")
@@ -51,6 +53,17 @@ public class Construtora implements Serializable {
 		return nome;
 	}
 	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public List<Obra> getObras() {
+		return obras;
+	}
+	
+	public void setObras(List<Obra> obras) {
+		this.obras = obras;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,17 +89,6 @@ public class Construtora implements Serializable {
 		return true;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<Obra> getObras() {
-		return obras;
-	}
-
-	public void setObras(List<Obra> obras) {
-		this.obras = obras;
-	}
 
 	
 
